@@ -199,7 +199,7 @@ class Mover
 		nv = @vel.mult(20)
 		nv = new Vector(nv.x, nv.y*-1)
 		if @g != null then @g.drawSingleBar(nv.mag())
-		if @g2 != null then @g2.drawVector(nv)
+		if @g != null then @g2.drawVector(nv)
 		@its++
 	
 	checkEdges: (w, h) ->
@@ -298,8 +298,13 @@ barGraph = d3.select('body')
 			.attr('x', 510)
 			.attr('y', 0)
 g = new Grapher(barGraph)
+vectorGraph = d3.select('body')
+				.append('svg')
+				.attr('width',200)
+				.attr('height',200)
+g2 = new Grapher(vectorGraph)
 world = new SystemController(svg)
-world.addMover(w/2,h/2,g,null)
+world.addMover(w/2,h/2,g,g2)
 
 world.addForce(new Vector(0.01,-0.02))
 world.addObstacle()
