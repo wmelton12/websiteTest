@@ -2,7 +2,7 @@ class Mover
   constructor: (@svg, @x, @y, @g, @g2) -> 
 		@circ = @svg.append('circle')
 			    .attr('cx', @x)
-     			    .attr('cy', @y)
+     			.attr('cy', @y)
 			    .attr('r', 20)
 			    .attr("fill","red")
 		@coll = new Collider()
